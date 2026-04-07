@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzería Martina's - Pedir Online</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1> Pizzería "Martina's"</h1>
+        <p>¡Las mejores pizzas!</p>
+    </header>
+
+    <main class="menu-container">
+        {% for pizza in pizzas %}
+        <div class="card-pizza">
+            <div class="pizza-info">
+                <h3>{{ pizza.nombre }}</h3>
+                <p class="categoria">{{ pizza.categoria }}</p>
+                <p class="precio">{{ pizza.precio }} Gs.</p>
+            </div>
+            <button class="btn-pedir" onclick="realizarPedido('{{ pizza.id }}', '{{ pizza.nombre }}')">
+                Pedir ahora
+            </button>
+        </div>
+        {% endfor %}
+    </main>
+
+    <div id="overlay" onclick="cerrarModal()"></div>
+
+    <div id="modalPedido">
+        <h2 id="pizzaSeleccionada"></h2>
+        <form action="/pedir" method="POST">
+            <input type="hidden" name="id_producto" id="inputID">
+            
+            <label for="cliente">Tu Nombre:</label>
+            <input type="text" name="cliente" id="cliente" placeholder="Ej: Juan Pérez" required>
+            
+            <label for="whatsapp">WhatsApp (sin el 0):</label>
+            <input type="text" name="whatsapp" id="whatsapp" placeholder="981123456" required>
+            
+            <label for="direccion">Dirección de entrega:</label>
+            <input type="text" name="direccion" id="direccion" placeholder="Ej: Av. Mcal. López c/..." required>
+            
+            <button type="submit" class="btn-confirmar">Confirmar Pedido ✅</button>
+            <button type="button" class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+        </form>
+    </div>
+
+    <script>
+        function realizarPedido(id, nombre) {
+            // Mostramos el modal y el fondo oscuro
+            document.getElementById('modalPedido').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+            
+            // Llenamos los datos dinámicos
+            document.getElementById('pizzaSeleccionada').innerText = 'Pedir: ' + nombre;
+            document.getElementById('inputID').value = id;
+        }
+
+        function cerrarModal() {
+            // Escondemos todo
+            document.getElementById('modalPedido').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

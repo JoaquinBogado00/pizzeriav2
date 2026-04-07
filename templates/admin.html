@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Control - Martina's</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body class="admin-body">
+    <header>
+        <h1>Pedidos Entrantes</h1>
+        <a href="/" class="link-home">← Ver Menú de Clientes</a>
+    </header>
+
+    <main>
+        <table class="tabla-pedidos">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Pizza</th>
+                    <th>Dirección</th>
+                    <th>WhatsApp</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos %}
+                <tr>
+                    <td>{{ pedido.cliente }}</td>
+                    <td><strong>{{ pedido.pizza_nombre }}</strong></td>
+                    <td>{{ pedido.direccion }}</td>
+                    <td>{{ pedido.telefono }}</td>
+                    <td>
+                        <span class="badge {{ pedido.estado.lower() }}">
+                            {{ pedido.estado }}
+                        </span>
+                    </td>
+                    <td class="acciones-container">
+                        <a href="https://wa.me/{{ pedido.telefono }}?text=Hola%20{{ pedido.cliente }},%20tu%20pedido%20de%20{{ pedido.pizza_nombre }}%20está%20{{ pedido.estado }}!%20🍕" 
+                           target="_blank" class="btn-whatsapp">
+                           📲 Notificar WhatsApp
+                        </a>
+
+                        <div class="estados-links">
+                            <a href="{{ url_for('admin.actualizar_estado', id_pedido=pedido.id, nuevo_estado='Preparando') }}">👨‍🍳 Cocinar</a>
+                            <a href="{{ url_for('admin.actualizar_estado', id_pedido=pedido.id, nuevo_estado='En Camino') }}">🛵 Enviar</a>
+                            <a href="{{ url_for('admin.actualizar_estado', id_pedido=pedido.id, nuevo_estado='Entregado') }}">✅ Listo</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
