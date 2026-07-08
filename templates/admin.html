@@ -8,7 +8,7 @@
 <body class="admin-body">
     <header>
         <h1>Pedidos Entrantes</h1>
-        <a href="/" class="link-home">← Ver Menú de Clientes</a>
+        <a href="/" class="link-home"> Ver Men de Clientes</a>
     </header>
 
     <main>
@@ -17,7 +17,7 @@
                 <tr>
                     <th>Cliente</th>
                     <th>Pizza</th>
-                    <th>Dirección</th>
+                    <th>Direccin</th>
                     <th>WhatsApp</th>
                     <th>Estado</th>
                     <th>Acciones</th>
@@ -36,15 +36,15 @@
                         </span>
                     </td>
                     <td class="acciones-container">
-                        <a href="https://wa.me/{{ pedido.telefono }}?text=Hola%20{{ pedido.cliente }},%20tu%20pedido%20de%20{{ pedido.pizza_nombre }}%20está%20{{ pedido.estado }}!%20🍕" 
+                        <a href="https://wa.me/{{ pedido.telefono }}?text=Hola%20{{ pedido.cliente }},%20tu%20pedido%20de%20{{ pedido.pizza_nombre }}%20est%20{{ pedido.estado }}!%20" 
                            target="_blank" class="btn-whatsapp">
-                           📲 Notificar WhatsApp
+                            Notificar WhatsApp
                         </a>
 
                         <div class="estados-links">
-                            <a href="{{ url_for('admin.actualizar_estado', id_pedido=pedido.id, nuevo_estado='Preparando') }}">👨‍🍳 Cocinar</a>
-                            <a href="{{ url_for('admin.actualizar_estado', id_pedido=pedido.id, nuevo_estado='En Camino') }}">🛵 Enviar</a>
-                            <a href="{{ url_for('admin.actualizar_estado', id_pedido=pedido.id, nuevo_estado='Entregado') }}">✅ Listo</a>
+                            <a href="{{ url_for('admin.actualizar_estado', id_pedido=pedido.id, nuevo_estado='Preparando') }}"> Cocinar</a>
+                            <a href="{{ url_for('admin.actualizar_estado', id_pedido=pedido.id, nuevo_estado='En Camino') }}">Enviar</a>
+                            <a href="{{ url_for('admin.actualizar_estado', id_pedido=pedido.id, nuevo_estado='Entregado') }}">  Listo</a>
                         </div>
                     </td>
                 </tr>

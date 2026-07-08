@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzería Martina's - Pedir Online</title>
+    <title>Pizzera Martina's - Pedir Online</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
     <header>
-        <h1> Pizzería "Martina's"</h1>
-        <p>¡Las mejores pizzas!</p>
+        <h1> Pizzera "Martina's"</h1>
+        <p>Las mejores pizzas!</p>
     </header>
 
     <main class="menu-container">
@@ -36,15 +36,15 @@
             <input type="hidden" name="id_producto" id="inputID">
             
             <label for="cliente">Tu Nombre:</label>
-            <input type="text" name="cliente" id="cliente" placeholder="Ej: Juan Pérez" required>
+            <input type="text" name="cliente" id="cliente" placeholder="Ej: Juan Prez" required>
             
             <label for="whatsapp">WhatsApp (sin el 0):</label>
             <input type="text" name="whatsapp" id="whatsapp" placeholder="981123456" required>
             
-            <label for="direccion">Dirección de entrega:</label>
-            <input type="text" name="direccion" id="direccion" placeholder="Ej: Av. Mcal. López c/..." required>
+            <label for="direccion">Direccin de entrega:</label>
+            <input type="text" name="direccion" id="direccion" placeholder="Ej: Av. Mcal. Lpez c/..." required>
             
-            <button type="submit" class="btn-confirmar">Confirmar Pedido ✅</button>
+            <button type="submit" class="btn-confirmar">Confirmar Pedido </button>
             <button type="button" class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
         </form>
     </div>
@@ -55,7 +55,7 @@
             document.getElementById('modalPedido').style.display = 'block';
             document.getElementById('overlay').style.display = 'block';
             
-            // Llenamos los datos dinámicos
+            // Llenamos los datos dinmicos
             document.getElementById('pizzaSeleccionada').innerText = 'Pedir: ' + nombre;
             document.getElementById('inputID').value = id;
         }

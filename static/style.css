@@ -64,3 +64,78 @@
     z-index: 999;
 }
 
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #2c3e50;
+}
+
+header {
+    background: #e67e22;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+}
+
+.menu-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    gap: 20px;
+}
+
+.card-pizza {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pizza-info h3 {
+    margin: 0 0 5px;
+    color: #e67e22;
+}
+
+.pizza-info .categoria {
+    margin: 0 0 5px;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.pizza-info .precio {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.btn-pedir {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.btn-pedir:hover {
+    background: #219150;
+}
